@@ -7,7 +7,10 @@ const { Navigator, Screen } = createDrawerNavigator();
 const DrawerNavigator = () => (
   <Navigator>
     <Screen name="Home" component={MainStackNavigator} />
-    <Screen name="About" component={MainStackNavigator} />
+
+    <Screen name="About">
+      {({ route }) => <MainStackNavigator initialRoute={route.name} />}
+    </Screen>
   </Navigator>
 );
 
