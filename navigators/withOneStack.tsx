@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StackNavigationOptions } from "@react-navigation/stack";
+import options from "./StackNavigationOptions";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -11,7 +11,3 @@ export default function withOneStack(WrappedComponent: React.FC) {
     </Navigator>
   );
 }
-
-const options: StackNavigationOptions = {
-  headerTitleAlign: "center",
-};
