@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface initialStateInterface {
-  value: string
+  value: string;
 }
 const initialState: initialStateInterface = {
-  value: 'Hello world'
-}
+  value: "Hello world",
+};
 
 const testSlice = createSlice({
   name: "test",

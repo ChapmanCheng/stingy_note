@@ -1,15 +1,15 @@
 import React from "react";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { linearGradient } from "../utilities/colors";
 import { useNavigation } from "@react-navigation/native";
-import {RootState} from '../store/store'
+import { RootState } from "../store/store";
 import globalStyles from "../styles/global";
 
 export default function Home() {
   const navigation = useNavigation();
-  const text = useSelector((state:RootState)=> state.value)
+  const text = useSelector((state: RootState) => state.test.value);
 
   return (
     <LinearGradient
