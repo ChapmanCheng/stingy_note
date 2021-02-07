@@ -1,7 +1,13 @@
 import { StackNavigationOptions } from "@react-navigation/stack";
+import { Ionicons } from "@expo/vector-icons";
+import { Route } from "@react-navigation/native";
 
-const options: StackNavigationOptions = {
-  headerTitleAlign: "center",
-};
+interface screenOptionsProps {
+  navigation: any,
+  route: Route<string , object | undefined>
+}
 
-export default options;
+const getScreenOptions = ({navigation, route}: screenOptionsProps): StackNavigationOptions => ({
+  title: 'Hello World',
+  // headerLeft: () => (<Ionicons name='menu' onPress={()=>{}} />)
+})
