@@ -1,13 +1,12 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../screens/Home";
+import Home from "../screens/StingyNotes";
 import About from "../screens/About";
-import options from "./StackNavigationOptions";
 
 const { Navigator, Screen } = createStackNavigator();
 
 const MainStackNavigator = () => (
-  <Navigator screenOptions={options}>
+  <Navigator>
     <Screen name="Home" component={Home} />
   </Navigator>
 );
