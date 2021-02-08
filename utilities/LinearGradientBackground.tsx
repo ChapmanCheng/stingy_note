@@ -1,6 +1,5 @@
 import React from "react";
-import { LinearGradient } from "expo-linear-gradient";
-import { linearGradient } from "./colors";
+import { LinearGradient, LinearGradientProps } from "expo-linear-gradient";
 import globalStyles from "../styles/global";
 
 interface props {
@@ -18,3 +17,9 @@ export default function LinearGradientBackground(props: props) {
     </LinearGradient>
   );
 }
+
+
+const linearGradient: LinearGradientProps = {
+  colors: ["#fff", "rgba(239, 98, 227, 0.5)", "rgba(60, 90, 193, 0.5)"],
+  locations: [0.05, 0.7, 1],
+};
