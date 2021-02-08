@@ -24,7 +24,12 @@ export default function Stingyform() {
   };
 
   const handleSubmit = () => {
-    if (date && sin) dispatch(addNewStingyNote({ date, sin, penalty }));
+    if (date && sin) {
+      dispatch(addNewStingyNote({ date, sin, penalty }));
+      setDate(Date.now())
+      setSin("")
+      setPenalty("")
+    }
   };
 
   return (
