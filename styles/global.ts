@@ -4,7 +4,8 @@ const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "stretch",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    paddingTop: 24 
   },
 });
 
