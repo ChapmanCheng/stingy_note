@@ -4,14 +4,12 @@ import {
   Text,
   View,
   TextInput,
-  Button,
-  Pressable,
   TouchableOpacity,
 } from "react-native";
 import { useDispatch } from "react-redux";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-import { stingyNote, addNewStingyNote } from "../slices/stingyNotesSlice";
+import { addNewStingyNote } from "../slices/stingyNotesSlice";
 
 export default function Stingyform() {
   const [date, setDate] = useState(Date.now());
@@ -26,8 +24,7 @@ export default function Stingyform() {
   };
 
   const handleSubmit = () => {
-    console.log("Hello");
-    // if (date && sin) dispatch(addNewStingyNote({ date, sin, penalty }));
+    if (date && sin) dispatch(addNewStingyNote({ date, sin, penalty }));
   };
 
   return (
@@ -84,10 +81,9 @@ const fontSize = 24;
 const styles = StyleSheet.create({
   inputGroup: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 8 * 1.5,
-    paddingHorizontal: 16,
   },
   input: {
     height: 51,
