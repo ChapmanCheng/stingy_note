@@ -1,8 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import testSliceReducer from "../slices/testSlice";
+import stingyNotesReducer from "../slices/stingyNotesSlice";
 
 const store = configureStore({
   reducer: {
+    stingyNotes: stingyNotesReducer,
     test: testSliceReducer,
   },
 });
