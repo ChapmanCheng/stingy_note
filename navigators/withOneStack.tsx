@@ -5,7 +5,7 @@ import {
   StackNavigationOptions,
 } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
-import { Animated, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 const { Navigator, Screen } = createStackNavigator();
 

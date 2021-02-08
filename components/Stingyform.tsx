@@ -28,7 +28,7 @@ export default function Stingyform() {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.inputGroup}>
         <Text style={styles.text}>邊日激嬲你</Text>
         <TextInput
@@ -79,6 +79,11 @@ export default function Stingyform() {
 const fontSize = 24;
 
 const styles = StyleSheet.create({
+  container: {
+    flexGrow: 0,
+    flexShrink: 0,
+    flexBasis: "auto",
+  },
   inputGroup: {
     flexDirection: "row",
     justifyContent: "space-between",

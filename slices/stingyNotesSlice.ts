@@ -12,8 +12,8 @@ export interface stingyNote {
 const testData = [
   {
     date: Date.parse("August 31, 2020"),
-    sin: "又唔講故事！",
-    penalty: "要將2個故事",
+    sin: "又唔講故事",
+    penalty: "要講2個故事",
   },
   {
     date: Date.parse("June 17, 2020"),
@@ -22,12 +22,12 @@ const testData = [
   },
   {
     date: Date.parse("May 3, 2020"),
-    sin: "又唔講故事！",
+    sin: "又唔講故事",
     penalty: "要請我食二寶",
   },
 ];
 
-const initialState: initialStateType = [...testData, ...testData, ...testData];
+const initialState: initialStateType = [...testData];
 
 const stingyNotesSlice = createSlice({
   name: "stingyNotes",
