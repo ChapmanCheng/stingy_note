@@ -13,7 +13,6 @@ export default function LinearGradientBackground(props: props) {
       colors={linearGradient.colors}
       locations={linearGradient.locations}
       style={globalStyles.container}
-      {...props}
     >
       {props.children}
     </LinearGradient>

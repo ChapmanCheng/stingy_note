@@ -3,7 +3,7 @@ import LinearGradientBackground from "../utilities/LinearGradientBackground";
 import Stingyform from "../components/Stingyform";
 import StingyList from "../components/StingyList";
 
-export default function Home() {
+export default function StingyNotes() {
   return (
     <LinearGradientBackground>
       <Stingyform />
