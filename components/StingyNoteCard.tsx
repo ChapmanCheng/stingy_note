@@ -9,12 +9,11 @@ interface props {
 export default function StingyNoteCard({ item }: props) {
   const { date, sin, penalty } = item;
   const hasPenalty: boolean = Boolean(penalty);
+  const dateString = new Date(date).toLocaleDateString("zh-hk");
 
   return (
     <View style={styles.card}>
-      <Text style={styles.date}>
-        {new Date(date).toLocaleDateString("zh-hk")}
-      </Text>
+      <Text style={styles.date}>{dateString}</Text>
       <View
         style={hasPenalty ? styles.textFlexboxWithPenalty : styles.textFlexbox}
       >

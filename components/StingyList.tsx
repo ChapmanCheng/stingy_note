@@ -12,7 +12,7 @@ import StingyNoteCard from "./StingyNoteCard";
 
 export default function StingyList() {
   const stingyNotes = useSelector(selectAllStingyNotes);
-  
+
   return (
     <View style={styles.container}>
       <FlatList

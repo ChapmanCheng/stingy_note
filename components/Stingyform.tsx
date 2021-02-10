@@ -62,9 +62,7 @@ export default function Stingyform() {
           placeholder="e.g. 打到佢變豬頭"
         />
       </View>
-      <View
-        style={StyleSheet.compose(styles.inputGroup, { marginLeft: "auto" })}
-      >
+      <View style={{ ...styles.inputGroup, justifyContent: "flex-end" }}>
         <TouchableOpacity style={styles.submitBtn} onPressOut={handleSubmit}>
           <Text style={styles.submitPlus}>+</Text>
           <Text style={styles.submitText}>記住佢</Text>
@@ -120,13 +118,14 @@ const styles = StyleSheet.create({
   },
   submitPlus: {
     fontSize: 30,
+    textAlign: "center",
     // fontFamily: "Norican",
     fontStyle: "italic",
     color: "#FFF",
     backgroundColor: "#F4D4D4",
     width: 30,
     height: 30,
-    lineHeight: 28,
+    lineHeight: 32,
     borderRadius: 18,
   },
   submitText: {
