@@ -26,9 +26,9 @@ export default function Stingyform() {
   const handleSubmit = () => {
     if (date && sin) {
       dispatch(addNewStingyNote({ date, sin, penalty }));
-      setDate(Date.now())
-      setSin("")
-      setPenalty("")
+      setDate(Date.now());
+      setSin("");
+      setPenalty("");
     }
   };
 
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   submitPlus: {
     fontSize: 30,
-    fontFamily: "Norican",
+    // fontFamily: "Norican",
     fontStyle: "italic",
     color: "#FFF",
     backgroundColor: "#F4D4D4",
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
   submitText: {
     fontSize: 24,
-    fontFamily: "Noto Sans Tamil",
+    // fontFamily: "Noto Sans Tamil",
     color: "#8B7878",
     letterSpacing: 0.1 * 8,
   },

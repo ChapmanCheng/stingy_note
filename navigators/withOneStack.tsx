@@ -12,7 +12,7 @@ const { Navigator, Screen } = createStackNavigator();
 export default function withOneStack(WrappedComponent: React.FC) {
   return () => (
     <Navigator screenOptions={screenOptions}>
-      <Screen name={'愛情小氣簿'} component={WrappedComponent}/>
+      <Screen name={"愛情小氣簿"} component={WrappedComponent} />
     </Navigator>
   );
 }
