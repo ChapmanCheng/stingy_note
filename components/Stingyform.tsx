@@ -11,6 +11,8 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 import { addNewStingyNote } from "../slices/stingyNotesSlice";
 
+import globalStyles from '../styles/global'
+
 export default function Stingyform() {
   const [date, setDate] = useState(Date.now());
   const [sin, setSin] = useState("");
@@ -34,35 +36,35 @@ export default function Stingyform() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputGroup}>
-        <Text style={styles.text}>邊日激嬲你</Text>
+      <View style={globalStyles.inputGroup}>
+        <Text style={globalStyles.label}>邊日激嬲你</Text>
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           onFocus={() => setShowDateTimePicker(true)}
           showSoftInputOnFocus={false}
           value={new Date(date).toLocaleDateString("zh-HK")}
           textAlign="center"
         />
       </View>
-      <View style={styles.inputGroup}>
-        <Text style={styles.text}>乜事激嬲你</Text>
+      <View style={globalStyles.inputGroup}>
+        <Text style={globalStyles.label}>乜事激嬲你</Text>
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           onChangeText={(text) => setSin(text)}
           value={sin}
           placeholder="e.g. 唔打電話俾我"
         />
       </View>
-      <View style={styles.inputGroup}>
-        <Text style={styles.text}>點懲罰好？</Text>
+      <View style={globalStyles.inputGroup}>
+        <Text style={globalStyles.label}>點懲罰好？</Text>
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           onChangeText={(text) => setPenalty(text)}
           value={penalty}
           placeholder="e.g. 打到佢變豬頭"
         />
       </View>
-      <View style={{ ...styles.inputGroup, justifyContent: "flex-end" }}>
+      <View style={{ ...globalStyles.inputGroup, justifyContent: "flex-end" }}>
         <TouchableOpacity style={styles.submitBtn} onPressOut={handleSubmit}>
           <Text style={styles.submitPlus}>+</Text>
           <Text style={styles.submitText}>記住佢</Text>
@@ -86,27 +88,6 @@ const styles = StyleSheet.create({
     flexGrow: 0,
     flexShrink: 0,
     flexBasis: "auto",
-  },
-  inputGroup: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 8 * 1.5,
-  },
-  input: {
-    height: 51,
-    width: 208,
-    backgroundColor: "rgba(255, 255, 255, 0.5)",
-    paddingHorizontal: 8,
-    fontSize,
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "#E9E1E1",
-    borderRadius: 10,
-  },
-  text: {
-    fontSize,
-    lineHeight: 35,
   },
   submitBtn: {
     backgroundColor: "#FFF2F2",
