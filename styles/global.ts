@@ -5,8 +5,8 @@ const globalStyles = StyleSheet.create({
     flex: 1,
     alignItems: "stretch",
     justifyContent: "flex-start",
-    paddingTop: "1rem",
-    paddingHorizontal: "0.5rem",
+    paddingTop: 16,
+    paddingHorizontal: 8,
   },
 });
 
