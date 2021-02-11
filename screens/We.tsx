@@ -4,8 +4,6 @@ import {
   Text,
   View,
   Image,
-  StyleProp,
-  ViewStyle,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import globalStyles from "../styles/global";
@@ -68,11 +66,12 @@ const styles = StyleSheet.create({
   },
   longerInput: {
     ...globalStyles.input,
-    width: 265,
+    minWidth: 265,
   },
   shorterInput: {
     ...globalStyles.input,
-    width: 145,
+    minWidth: 145,
+    flexBasis: 51
   },
   inputBlock: { alignItems: "center", marginHorizontal: 16 },
   comment: {
