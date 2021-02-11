@@ -10,9 +10,7 @@ import { useDispatch } from "react-redux";
 import DateTimePicker, {
   Event as DTPEvent,
 } from "@react-native-community/datetimepicker";
-
 import { addNewStingyNote } from "../slices/stingyNotesSlice";
-
 import globalStyles from "../styles/global";
 
 export default function Stingyform() {
