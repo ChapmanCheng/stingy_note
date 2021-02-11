@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useDispatch } from "react-redux";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import DateTimePicker, {
+  Event as DTPEvent,
+} from "@react-native-community/datetimepicker";
 
 import { addNewStingyNote } from "../slices/stingyNotesSlice";
 
@@ -21,8 +23,9 @@ export default function Stingyform() {
 
   const dispatch = useDispatch();
 
-  const dateTimePickerChange = (e: any, selectedDate: any) => {
-    if (e.type === "set") setDate(Date.parse(selectedDate));
+  const dateTimePickerChange = (e: DTPEvent, date: Date | undefined) => {
+    if (e.type === "set") setDate(Date.parse(date));
+    setShowDateTimePicker(false);
   };
 
   const handleSubmit = () => {
@@ -42,7 +45,7 @@ export default function Stingyform() {
           style={globalStyles.input}
           onFocus={() => setShowDateTimePicker(true)}
           showSoftInputOnFocus={false}
-          value={new Date(date).toLocaleDateString("zh-HK")}
+          value={new Date(date).toLocaleDateString("zh-hk")}
           textAlign="center"
         />
       </View>
