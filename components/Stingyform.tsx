@@ -11,7 +11,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 import { addNewStingyNote } from "../slices/stingyNotesSlice";
 
-import globalStyles from '../styles/global'
+import globalStyles from "../styles/global";
 
 export default function Stingyform() {
   const [date, setDate] = useState(Date.now());

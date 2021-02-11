@@ -30,9 +30,8 @@ const globalStyles = StyleSheet.create({
   label: {
     fontSize,
     lineHeight: 35,
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
-  
 });
 
 export default globalStyles;

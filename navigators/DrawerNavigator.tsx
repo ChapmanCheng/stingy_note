@@ -9,7 +9,7 @@ const { Navigator, Screen } = createDrawerNavigator();
 
 const StingyNotesWithOneStack = withOneStack(StingyNotes);
 const TodoListWithOneStack = withOneStack(TodoList);
-const WeWithOneStack = withOneStack(We)
+const WeWithOneStack = withOneStack(We);
 
 const DrawerNavigator = () => (
   <Navigator>
