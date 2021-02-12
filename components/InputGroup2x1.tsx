@@ -70,5 +70,6 @@ const styles = StyleSheet.create({
     ...globalStyles.input,
     minWidth: 145,
     flexBasis: 51,
+    textAlign: "center",
   },
 });
