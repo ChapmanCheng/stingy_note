@@ -1,19 +1,21 @@
 import React from "react";
 import { LinearGradient, LinearGradientProps } from "expo-linear-gradient";
 import globalStyles from "../styles/global";
+import { ViewProps, ViewStyle } from "react-native";
 
-interface props {
-  children: JSX.Element | JSX.Element[];
+interface props extends ViewProps{
+  children: React.ReactNode;
+  style?: ViewStyle 
 }
 
-export default function LinearGradientBackground(props: props) {
+export default function LinearGradientBackground({children, style}: props) {
   return (
     <LinearGradient
       colors={linearGradient.colors}
       locations={linearGradient.locations}
-      style={globalStyles.container}
+      style={{...globalStyles.container, ...style}}
     >
-      {props.children}
+      {children}
     </LinearGradient>
   );
 }

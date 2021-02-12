@@ -80,7 +80,6 @@ export default function Stingyform() {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flexGrow: 0,
