@@ -41,7 +41,7 @@ export default function We() {
       <View style={globalStyles.inputGroup}>
         <Text style={globalStyles.label}>拍拖紀念日</Text>
         <TextInput
-          style={globalStyles.input}
+          style={{ ...globalStyles.input, textAlign: "center" }}
           value={
             datingAnniversary
               ? new Date(datingAnniversary).toLocaleDateString("zh-hk")
