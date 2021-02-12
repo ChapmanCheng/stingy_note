@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Dimensions,
-  FlatList,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { Dimensions, FlatList, StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
-import { selectAllStingyNotes, stingyNote } from "../slices/stingyNotesSlice";
+import { selectAllStingyNotes } from "../slices/stingyNotesSlice";
 import StingyNoteCard from "./StingyNoteCard";
 
 export default function StingyList() {
@@ -17,7 +11,6 @@ export default function StingyList() {
     <View style={styles.container}>
       <FlatList
         data={stingyNotes}
-        keyExtractor={({ date }) => date.toString()}
         renderItem={({ item }) => <StingyNoteCard item={item} />}
       />
     </View>

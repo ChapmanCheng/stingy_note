@@ -12,11 +12,12 @@ import Button from "../components/Button";
 import TodoCard, { styles as todoStyle } from "../components/TodoCard";
 import LinearGradientBackground from "../utilities/LinearGradientBackground";
 import { TextInput } from "react-native-gesture-handler";
+import { v1 as uuidv1 } from "react-native-uuid";
 
 export interface task {
   content: string;
   completed: boolean;
-  key: number;
+  key: string;
 }
 
 export default function todoList() {
@@ -25,16 +26,16 @@ export default function todoList() {
     {
       content: "同小寶食芝士火鍋",
       completed: true,
-      key: 1,
+      key: uuidv1(),
     },
     {
       content: "同小寶過白色聖誕",
       completed: false,
-      key: 2,
+      key: uuidv1(),
     },
   ]);
 
-  const handleComplete = (key: number) =>
+  const handleComplete = (key: string) =>
     setTodos(
       todos.map((todo) => {
         if (todo.key === key) todo.completed = !todo.completed;
@@ -42,20 +43,18 @@ export default function todoList() {
       })
     );
 
-  const handleDelete = (key: number) =>
+  const handleDelete = (key: string) =>
     setTodos(todos.filter((todo) => todo.key !== key));
 
   const changeNewTodo = (text: string) => setNewTodo(text);
   const addnewTodo = () => {
-    setTodos([
-      ...todos,
-      {
-        completed: false,
-        content: newTodo,
-        key: Math.random(),
-      },
-    ]),
-      setNewTodo("");
+    const newlyAddedTodo = {
+      completed: false,
+      content: newTodo,
+      key: uuidv1(),
+    };
+    setTodos([newlyAddedTodo, ...todos]);
+    setNewTodo("");
   };
 
   return (

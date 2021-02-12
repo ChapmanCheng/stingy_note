@@ -5,8 +5,8 @@ import { Entypo } from "@expo/vector-icons";
 
 interface props {
   item: task;
-  handleComplete: (key: number) => void;
-  handleDelete: (key: number) => void;
+  handleComplete: (key: string) => void;
+  handleDelete: (key: string) => void;
 }
 
 export default function TodoCard({
