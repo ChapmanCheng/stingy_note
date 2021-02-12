@@ -59,46 +59,50 @@ export default function todoList() {
   };
 
   return (
-    <LinearGradientBackground style={{justifyContent: 'space-between'}}>
-        <View style={{ alignItems: "center" }}>
-          <Image
-            width={Dimensions.get("window").width}
-            source={require("../assets/todoListTitle.png")}
+    <LinearGradientBackground style={{ justifyContent: "space-between" }}>
+      <View style={{ alignItems: "center" }}>
+        <Image
+          width={Dimensions.get("window").width}
+          source={require("../assets/todoListTitle.png")}
+        />
+      </View>
+      <View style={styles.listContainer}>
+        {/* new input value */}
+        <View style={todoStyle.card}>
+          <Entypo name="circle" size={32} color="grey" />
+          <TextInput
+            style={styles.newTodoInput}
+            value={newTodo}
+            onChangeText={changeNewTodo}
+            placeholder="New Todo..."
           />
+          <Entypo name="cross" size={24} color="grey" />
         </View>
-        <View style={styles.flatList}>
-          <View style={todoStyle.card}>
-            <Entypo name="circle" size={32} color="grey" />
-            <TextInput
-              style={styles.newTodoInput}
-              value={newTodo}
-              onChangeText={changeNewTodo}
-              placeholder="New Todo..."
-            />
-            <Entypo name="cross" size={24} color="grey" />
-          </View>
+        {/* new input value */}
 
-          <FlatList
-            data={todos}
-            renderItem={({ item }) => (
-              <TodoCard
-                item={item}
-                handleComplete={handleComplete}
-                handleDelete={handleDelete}
-              />
-            )}
-          />
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button handlePress={addnewTodo}>新加清單</Button>
-        </View>
+        <FlatList
+          data={todos}
+          renderItem={({ item }) => (
+            <TodoCard
+              item={item}
+              handleComplete={handleComplete}
+              handleDelete={handleDelete}
+            />
+          )}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button handlePress={addnewTodo}>新加清單</Button>
+      </View>
     </LinearGradientBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  flatList: {
+  listContainer: {
+    flex: 1,
     marginTop: 32,
+    maxHeight: 400,
   },
   buttonContainer: {
     marginHorizontal: 50,

@@ -23,17 +23,21 @@ export default function Stingyform() {
   const dispatch = useDispatch();
 
   const dateTimePickerChange = (e: DTPEvent, date: Date | undefined) => {
-    if (e.type === "set") setDate(Date.parse(date));
+    if (date) setDate(Date.parse(date));
     setShowDateTimePicker(false);
   };
 
   const handleSubmit = () => {
     if (date && sin) {
       dispatch(addNewStingyNote({ date, sin, penalty }));
-      setDate(Date.now());
-      setSin("");
-      setPenalty("");
+      setFormDefault();
     }
+  };
+
+  const setFormDefault = () => {
+    setDate(Date.now());
+    setSin("");
+    setPenalty("");
   };
 
   return (

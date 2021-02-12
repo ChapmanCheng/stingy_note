@@ -3,17 +3,17 @@ import { LinearGradient, LinearGradientProps } from "expo-linear-gradient";
 import globalStyles from "../styles/global";
 import { ViewProps, ViewStyle } from "react-native";
 
-interface props extends ViewProps{
+interface props extends ViewProps {
   children: React.ReactNode;
-  style?: ViewStyle 
+  style?: ViewStyle;
 }
 
-export default function LinearGradientBackground({children, style}: props) {
+export default function LinearGradientBackground({ children, style }: props) {
   return (
     <LinearGradient
       colors={linearGradient.colors}
       locations={linearGradient.locations}
-      style={{...globalStyles.container, ...style}}
+      style={{ ...globalStyles.container, ...style }}
     >
       {children}
     </LinearGradient>
