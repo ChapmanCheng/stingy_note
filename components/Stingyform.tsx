@@ -12,6 +12,7 @@ import DateTimePicker, {
 } from "@react-native-community/datetimepicker";
 import { addNewStingyNote } from "../slices/stingyNotesSlice";
 import globalStyles from "../styles/global";
+import Button from "./Button";
 
 export default function Stingyform() {
   const [date, setDate] = useState(Date.now());
@@ -66,10 +67,7 @@ export default function Stingyform() {
         />
       </View>
       <View style={{ ...globalStyles.inputGroup, justifyContent: "flex-end" }}>
-        <TouchableOpacity style={styles.submitBtn} onPressOut={handleSubmit}>
-          <Text style={styles.submitPlus}>+</Text>
-          <Text style={styles.submitText}>記住佢</Text>
-        </TouchableOpacity>
+        <Button handlePress={handleSubmit}>記住佢</Button>
       </View>
       {showDateTimePicker && (
         <DateTimePicker
@@ -82,38 +80,11 @@ export default function Stingyform() {
   );
 }
 
-const fontSize = 24;
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 0,
     flexShrink: 0,
     flexBasis: "auto",
-  },
-  submitBtn: {
-    backgroundColor: "#FFF2F2",
-    borderRadius: 30,
-    minWidth: 125,
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-  },
-  submitPlus: {
-    fontSize: 30,
-    textAlign: "center",
-    // fontFamily: "Norican",
-    fontStyle: "italic",
-    color: "#FFF",
-    backgroundColor: "#F4D4D4",
-    width: 30,
-    height: 30,
-    lineHeight: 32,
-    borderRadius: 18,
-  },
-  submitText: {
-    fontSize: 24,
-    // fontFamily: "Noto Sans Tamil",
-    color: "#8B7878",
-    letterSpacing: 0.1 * 8,
   },
 });
