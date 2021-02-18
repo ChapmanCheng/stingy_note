@@ -48,13 +48,15 @@ export default function todoList() {
 
   const changeNewTodo = (text: string) => setNewTodo(text);
   const addnewTodo = () => {
-    const newlyAddedTodo = {
-      completed: false,
-      content: newTodo,
-      key: uuidv1(),
-    };
-    setTodos([newlyAddedTodo, ...todos]);
-    setNewTodo("");
+    if (newTodo) {
+      const newlyAddedTodo = {
+        completed: false,
+        content: newTodo,
+        key: uuidv1(),
+      };
+      setTodos([newlyAddedTodo, ...todos]);
+      setNewTodo("");
+    }
   };
 
   return (
