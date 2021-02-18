@@ -30,7 +30,14 @@ export default function TodoCard({
           />
         )}
       </TouchableOpacity>
-      <Text style={styles.text}>{item.content}</Text>
+      <Text
+        style={{
+          ...styles.text,
+          textDecorationLine: item.completed ? "line-through" : "none",
+        }}
+      >
+        {item.content}
+      </Text>
 
       <TouchableOpacity onPress={() => handleDelete(item.key)}>
         <Entypo name="cross" size={24} color="black" />
