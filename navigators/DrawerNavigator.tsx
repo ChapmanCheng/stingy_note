@@ -5,18 +5,18 @@ import TodoList from "../screens/TodoList";
 import withOneStack from "./withOneStack";
 import We from "../screens/We";
 
-const { Navigator, Screen } = createDrawerNavigator();
+const Drawer = createDrawerNavigator();
 
 const StingyNotesWithOneStack = withOneStack(StingyNotes);
 const TodoListWithOneStack = withOneStack(TodoList);
 const WeWithOneStack = withOneStack(We);
 
 const DrawerNavigator = () => (
-  <Navigator>
-    <Screen name="小氣簿" component={StingyNotesWithOneStack} />
-    <Screen name="小事情 大計劃" component={TodoListWithOneStack} />
-    <Screen name="我們" component={WeWithOneStack} />
-  </Navigator>
+  <Drawer.Navigator>
+    <Drawer.Screen name="小氣簿" component={StingyNotesWithOneStack} />
+    <Drawer.Screen name="小事情 大計劃" component={TodoListWithOneStack} />
+    <Drawer.Screen name="我們" component={WeWithOneStack} />
+  </Drawer.Navigator>
 );
 
 export default DrawerNavigator;
