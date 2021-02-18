@@ -7,6 +7,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -48,6 +49,7 @@ const screenOptions = ({
   route,
 }: screenOptionsProps): StackNavigationOptions => ({
   header: ({}) => (
+    <SafeAreaView>
       <LinearGradient
         colors={["rgba(243, 229, 191, 0.47)", "rgba(243, 137, 130, 1)"]}
         start={{ x: 0, y: 0 }}
@@ -56,13 +58,14 @@ const screenOptions = ({
       >
         <Text style={styles.headerText}>愛情小氣簿</Text>
 
-    <Ionicons
-      name="menu"
-      onPress={() => navigation.openDrawer()}
+        <Ionicons
+          name="menu"
+          onPress={() => navigation.openDrawer()}
           size={35}
           style={styles.headerMenu}
-    />
+        />
       </LinearGradient>
+    </SafeAreaView>
   ),
 
   // headerLeft: () => (
