@@ -1,27 +1,42 @@
 import React from "react";
-import { Route } from "@react-navigation/native";
-import {
-  createStackNavigator,
-  StackNavigationOptions,
-} from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
+import TitleSVG from "../svg-jsx/title-svg";
 
 const { Navigator, Screen } = createStackNavigator();
 
 export default function withOneStack(WrappedComponent: React.FC) {
   return () => (
-    <Navigator screenOptions={screenOptions} headerMode={"screen"}>
+    <Navigator
+      screenOptions={({ navigation, route }) => ({
+        header: ({}) => (
+          <SafeAreaView>
+            <LinearGradient
+              colors={["rgba(243, 229, 191, 0.47)", "rgba(243, 137, 130, 1)"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.header}
+            >
+              <TitleSVG />
+
+              <Ionicons
+                name="menu"
+                onPress={() => navigation.openDrawer()}
+                size={35}
+                style={styles.headerMenu}
+              />
+            </LinearGradient>
+          </SafeAreaView>
+        ),
+      })}
+      headerMode={"screen"}
+    >
       <Screen name={"愛情小氣簿"} component={WrappedComponent} />
     </Navigator>
   );
-}
-
-interface screenOptionsProps {
-  route: Route<string, object | undefined>;
-  navigation: any;
 }
 
 const styles = StyleSheet.create({
@@ -43,41 +58,3 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
-
-const screenOptions = ({
-  navigation,
-  route,
-}: screenOptionsProps): StackNavigationOptions => ({
-  header: ({}) => (
-    <SafeAreaView>
-      <LinearGradient
-        colors={["rgba(243, 229, 191, 0.47)", "rgba(243, 137, 130, 1)"]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={styles.header}
-      >
-        <Text style={styles.headerText}>愛情小氣簿</Text>
-
-        <Ionicons
-          name="menu"
-          onPress={() => navigation.openDrawer()}
-          size={35}
-          style={styles.headerMenu}
-        />
-      </LinearGradient>
-    </SafeAreaView>
-  ),
-
-  // headerLeft: () => (
-  //   <Ionicons
-  //     name="menu"
-  //     onPress={() => navigation.openDrawer()}
-  //     size={30}
-  //     style={{ marginLeft: 16 }}
-  //   />
-  // ),
-});
-
-// colors={["rgba(41, 186, 218, 0.91)", "rgba(237, 66, 148, 0.83)"]}
-// start={{x: 0, y: 0}}
-// end={{x: 1, y: 1}}

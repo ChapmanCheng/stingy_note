@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { stingyNote } from "../slices/stingyNotesSlice";
+import YiuSVG from "../svg-jsx/yiu-svg";
 
 interface props {
   item: stingyNote;
@@ -22,10 +23,7 @@ export default function StingyNoteCard({ item }: props) {
         </Text>
         {hasPenalty && (
           <React.Fragment>
-            <View style={styles.yiuContainer}>
-              <Text style={styles.yiu}>要</Text>
-              <Text style={{ ...styles.yiu, ...styles.yiuShadow }}>要</Text>
-            </View>
+            <YiuSVG />
             <Text style={styles.text} numberOfLines={1}>
               {penalty}
             </Text>
@@ -63,21 +61,5 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     lineHeight: 35,
-  },
-  yiuContainer: {
-    position: "relative",
-  },
-  yiu: {
-    fontSize: 48,
-    lineHeight: 48,
-    color: "#FFF",
-    textShadowColor: "#F8C2C2",
-    textShadowRadius: 10,
-  },
-  yiuShadow: {
-    position: "absolute",
-    textShadowColor: "rgba(0, 0, 0, 0.25)",
-    textShadowRadius: 5,
-    textShadowOffset: { width: 4, height: 4 },
   },
 });
