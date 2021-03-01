@@ -1,24 +1,22 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { task } from "../screens/TodoList";
 import { Entypo } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { task } from "../screens/TodoList";
+import { deleteTodo, toggleComplete } from "../slices/toDoListSlice";
 
 interface props {
   item: task;
-  handleComplete: (key: string) => void;
-  handleDelete: (key: string) => void;
 }
 
-export default function TodoCard({
-  item,
-  handleDelete,
-  handleComplete,
-}: props) {
+export default function TodoCard({ item }: props) {
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.card}>
       <TouchableOpacity
         style={{ position: "relative" }}
-        onPress={() => handleComplete(item.key)}
+        onPress={() => dispatch(toggleComplete(item.key))}
       >
         <Entypo name="circle" size={32} color="black" />
         {item.completed && (
@@ -39,7 +37,7 @@ export default function TodoCard({
         {item.content}
       </Text>
 
-      <TouchableOpacity onPress={() => handleDelete(item.key)}>
+      <TouchableOpacity onPress={() => dispatch(deleteTodo(item.key))}>
         <Entypo name="cross" size={24} color="black" />
       </TouchableOpacity>
     </View>

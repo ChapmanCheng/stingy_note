@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import testSliceReducer from "../slices/testSlice";
 import stingyNotesReducer from "../slices/stingyNotesSlice";
+import toDoListReducer from "../slices/toDoListSlice";
 
 const store = configureStore({
   reducer: {
     stingyNotes: stingyNotesReducer,
+    toDoList: toDoListReducer,
     test: testSliceReducer,
   },
 });

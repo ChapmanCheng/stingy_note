@@ -1,18 +1,18 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   StyleSheet,
-  Text,
   View,
   Image,
   Dimensions,
   FlatList,
+  TextInput,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import Button from "../components/Button";
 import TodoCard, { styles as todoStyle } from "../components/TodoCard";
 import LinearGradientBackground from "../utilities/LinearGradientBackground";
-import { TextInput } from "react-native-gesture-handler";
-import { v1 as uuidv1 } from "react-native-uuid";
+import { addTodo, selectAllToDoList } from "../slices/toDoListSlice";
 
 export interface task {
   content: string;
@@ -21,40 +21,14 @@ export interface task {
 }
 
 export default function todoList() {
+  const dispatch = useDispatch();
+  const todos = useSelector(selectAllToDoList);
   const [newTodo, setNewTodo] = useState("");
-  const [todos, setTodos] = useState<task[]>([
-    {
-      content: "同小寶食芝士火鍋",
-      completed: true,
-      key: uuidv1(),
-    },
-    {
-      content: "同小寶過白色聖誕",
-      completed: false,
-      key: uuidv1(),
-    },
-  ]);
 
-  const handleComplete = (key: string) =>
-    setTodos(
-      todos.map((todo) => {
-        if (todo.key === key) todo.completed = !todo.completed;
-        return todo;
-      })
-    );
-
-  const handleDelete = (key: string) =>
-    setTodos(todos.filter((todo) => todo.key !== key));
-
-  const changeNewTodo = (text: string) => setNewTodo(text);
-  const addnewTodo = () => {
+  const updateNewTodo = (text: string) => setNewTodo(text);
+  const add = () => {
     if (newTodo) {
-      const newlyAddedTodo = {
-        completed: false,
-        content: newTodo,
-        key: uuidv1(),
-      };
-      setTodos([newlyAddedTodo, ...todos]);
+      dispatch(addTodo(newTodo));
       setNewTodo("");
     }
   };
@@ -74,7 +48,7 @@ export default function todoList() {
           <TextInput
             style={styles.newTodoInput}
             value={newTodo}
-            onChangeText={changeNewTodo}
+            onChangeText={updateNewTodo}
             placeholder="New Todo..."
           />
           <Entypo name="cross" size={24} color="grey" />
@@ -83,17 +57,11 @@ export default function todoList() {
 
         <FlatList
           data={todos}
-          renderItem={({ item }) => (
-            <TodoCard
-              item={item}
-              handleComplete={handleComplete}
-              handleDelete={handleDelete}
-            />
-          )}
+          renderItem={({ item }) => <TodoCard item={item} />}
         />
       </View>
       <View style={styles.buttonContainer}>
-        <Button handlePress={addnewTodo}>新加清單</Button>
+        <Button handlePress={add}>新加清單</Button>
       </View>
     </LinearGradientBackground>
   );
