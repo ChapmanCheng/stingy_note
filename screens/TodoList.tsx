@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import {
   StyleSheet,
   View,
@@ -13,6 +12,7 @@ import Button from "../components/Button";
 import TodoCard, { styles as todoStyle } from "../components/TodoCard";
 import LinearGradientBackground from "../utilities/LinearGradientBackground";
 import { addTodo, selectAllToDoList } from "../slices/toDoListSlice";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 export interface task {
   content: string;
@@ -21,8 +21,8 @@ export interface task {
 }
 
 export default function todoList() {
-  const dispatch = useDispatch();
-  const todos = useSelector(selectAllToDoList);
+  const dispatch = useAppDispatch();
+  const todos = useAppSelector(selectAllToDoList);
   const [newTodo, setNewTodo] = useState("");
 
   const updateNewTodo = (text: string) => setNewTodo(text);

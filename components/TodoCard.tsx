@@ -1,16 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import { useDispatch } from "react-redux";
 import { task } from "../screens/TodoList";
 import { deleteTodo, toggleComplete } from "../slices/toDoListSlice";
+import { useAppDispatch } from "../store/hooks";
 
 interface props {
   item: task;
 }
 
 export default function TodoCard({ item }: props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <View style={styles.card}>

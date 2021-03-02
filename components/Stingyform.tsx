@@ -6,10 +6,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { useDispatch } from "react-redux";
 import DateTimePicker, {
   Event as DTPEvent,
 } from "@react-native-community/datetimepicker";
+import { useAppDispatch } from "../store/hooks";
 import { addNewStingyNote } from "../slices/stingyNotesSlice";
 import globalStyles from "../styles/global";
 import Button from "./Button";
@@ -20,7 +20,7 @@ export default function Stingyform() {
   const [penalty, setPenalty] = useState("");
   const [showDateTimePicker, setShowDateTimePicker] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const dateTimePickerChange = (e: DTPEvent, date: Date | undefined) => {
     if (date) setDate(Date.parse(date));

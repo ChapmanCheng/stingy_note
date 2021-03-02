@@ -1,11 +1,11 @@
 import React from "react";
 import { Dimensions, FlatList, StyleSheet, View } from "react-native";
-import { useSelector } from "react-redux";
 import { selectAllStingyNotes } from "../slices/stingyNotesSlice";
+import { useAppSelector } from "../store/hooks";
 import StingyNoteCard from "./StingyNoteCard";
 
 export default function StingyList() {
-  const stingyNotes = useSelector(selectAllStingyNotes);
+  const stingyNotes = useAppSelector(selectAllStingyNotes);
 
   return (
     <View style={styles.container}>
