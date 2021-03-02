@@ -9,7 +9,6 @@
     "pretty": "yarn prettier --write ./*.tsx ./**/*.tsx ./**/*.ts"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.13.4",
     "@react-native-community/datetimepicker": "3.0.4",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/drawer": "^5.12.3",
