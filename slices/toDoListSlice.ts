@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v1 as uuidv1 } from "react-native-uuid";
 import { RootState } from "../store/store";
+import Storage from '../Storage'
+import listItemType from "./listItemType";
 
-interface task {
+export interface task extends listItemType{
   content: string;
   completed: boolean;
-  key: string;
 }
 
 const initialState: task[] = [
@@ -13,11 +14,13 @@ const initialState: task[] = [
     content: "同小寶食芝士火鍋",
     completed: true,
     key: uuidv1(),
+    belongs: 'task'
   },
   {
     content: "同小寶過白色聖誕",
     completed: false,
     key: uuidv1(),
+    belongs: 'task'
   },
 ];
 
@@ -26,18 +29,26 @@ const toDoListSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action) => {
-      return state.concat({
+      const newTask: task = {
         content: action.payload,
         completed: false,
         key: uuidv1(),
-      });
+        belongs: 'task'
+      }
+      Storage.set(newTask)
+      return state.concat(newTask)
     },
     toggleComplete: (state, action) => {
       const selectedTask = state.find((task) => task.key === action.payload);
-      if (selectedTask) selectedTask.completed = !selectedTask.completed;
+      if (selectedTask) {
+        selectedTask.completed = !selectedTask.completed;
+        Storage.set(selectedTask)
+      }
     },
     deleteTodo: (state, action) => {
-      return state.filter((task) => task.key !== action.payload);
+      const newState = state.filter((task) => task.key !== action.payload);
+      Storage.remove(action.payload)
+      return newState;
     },
   },
 });
