@@ -9,6 +9,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Storage from "./Storage";
 import { useAppDispatch } from "./store/hooks";
 import {restoreAllStingyNotes} from './slices/stingyNotesSlice'
+import {restoreAllTodoListTasks} from './slices/toDoListSlice'
 
 export default function App() {
   return (
@@ -43,7 +44,7 @@ function AppNavigations() {
       return accu
     }, {stingys: [], tasks: []})
     dispatch(restoreAllStingyNotes(stingys))
-    // dispatch(restoreAllTodoListTasks(tasks))
+    dispatch(restoreAllTodoListTasks(tasks))
   }
 
   if (!isReady) {

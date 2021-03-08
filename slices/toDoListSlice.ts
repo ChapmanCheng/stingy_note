@@ -50,10 +50,13 @@ const toDoListSlice = createSlice({
       Storage.remove(action.payload)
       return newState;
     },
+    restoreAllTodoListTasks: (state, action) => {
+      return action.payload
+    }
   },
 });
 
 export default toDoListSlice.reducer;
-export const { addTodo, deleteTodo, toggleComplete } = toDoListSlice.actions;
+export const { addTodo, deleteTodo, toggleComplete, restoreAllTodoListTasks } = toDoListSlice.actions;
 
 export const selectAllToDoList = (state: RootState) => state.toDoList;
