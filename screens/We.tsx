@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, TextInput } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import globalStyles from "../styles/global";
 import LinearGradientBackground from "../utilities/LinearGradientBackground";
 import InputGroup2x1 from "../components/InputGroup2x1";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import Button from "../components/Button";
+
+const key = 'we';
 
 export default function We() {
   const [boyName, setBoyName] = useState("");
@@ -15,9 +19,40 @@ export default function We() {
   const [whoConfessed, setWhoConfessed] = useState("");
   const [confessDate, setConfessDate] = useState<number | null>(null);
   const [confessLocation, setConfessLocation] = useState("");
-  const [fstKissDate, setFstKissDate] = useState<number | null>(null);
-  const [fstKissDateLocation, setFstKissDateLocation] = useState("");
+  const [firstKissDate, setfirstKissDate] = useState<number | null>(null);
+  const [firstKissLocation, setfirstKissLocation] = useState("");
 
+  const permaSave = async  () => {
+    AsyncStorage.setItem(
+      key, 
+      JSON.stringify({ boyName, girlName, datingAnniversary, whoConfessed, confessDate, confessLocation, firstKissDate, firstKissLocation })
+    ).then(()=>console.log('We saved'))
+  }
+
+  const restoreWeData = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem(key)
+      if (jsonData) {
+        const { boyName, girlName, datingAnniversary, whoConfessed, confessDate, confessLocation, firstKissDate, firstKissLocation } = JSON.parse(jsonData)
+        setBoyName(boyName)
+        setGirlName(girlName)
+        setDatingAnniversary(datingAnniversary)
+        setWhoConfessed(whoConfessed)
+        setConfessDate(confessDate)
+        setConfessLocation(confessLocation)
+        setfirstKissDate(firstKissDate)
+        setfirstKissLocation(firstKissLocation)
+      }
+
+    } catch (e) {
+      console.error(e)
+    }
+  } 
+
+  useEffect(() => {
+    restoreWeData()
+  }, [])
+  
   return (
     <LinearGradientBackground>
       <View style={globalStyles.inputGroup}>
@@ -89,14 +124,15 @@ export default function We() {
       <View style={styles.inputGroup2x1}>
         <InputGroup2x1
           label1="幾時初吻?"
-          inputValue1={fstKissDate}
-          handleInputValue1={setFstKissDate}
+          inputValue1={firstKissDate}
+          handleInputValue1={setfirstKissDate}
           label2="初吻喺邊?"
-          inputValue2={fstKissDateLocation}
-          handleInputValue2={setFstKissDateLocation}
+          inputValue2={firstKissLocation}
+          handleInputValue2={setfirstKissLocation}
         />
       </View>
       <Text style={styles.comment}>{"寫低就唔會忘記啦^_<"}</Text>
+      <Button handlePress={permaSave}>記住先!</Button>
     </LinearGradientBackground>
   );
 }
