@@ -12,7 +12,7 @@ const TodoListWithOneStack = withOneStack(TodoList);
 const WeWithOneStack = withOneStack(We);
 
 const DrawerNavigator = () => (
-  <Drawer.Navigator>
+  <Drawer.Navigator drawerPosition={"right"} >
     <Drawer.Screen name="小氣簿" component={StingyNotesWithOneStack} />
     <Drawer.Screen name="小事情 大計劃" component={TodoListWithOneStack} />
     <Drawer.Screen name="我們" component={WeWithOneStack} />
