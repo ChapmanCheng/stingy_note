@@ -12,31 +12,37 @@ export interface stingyNote extends listItemType {
   penalty: string;
 }
 
-const testData = [
-  {
+// const testData = [
+//   {
+//     date: Date.parse("August 31, 2020"),
+//     sin: "又唔講故事",
+//     penalty: "要講2個故事",
+//     key: uuidv1(),
+//     belongs: 'stingy'
+//   },
+//   {
+//     date: Date.parse("June 17, 2020"),
+//     sin: "約左我但又五點訓",
+//     penalty: "",
+//     key: uuidv1(),
+//     belongs: 'stingy'
+//   },
+//   {
+//     date: Date.parse("May 3, 2020"),
+//     sin: "又唔講故事",
+//     penalty: "要請我食二寶",
+//     key: uuidv1(),
+//     belongs: 'stingy'
+//   },
+// ];
+
+const initialState: initialStateType = [{
     date: Date.parse("August 31, 2020"),
     sin: "又唔講故事",
     penalty: "要講2個故事",
     key: uuidv1(),
     belongs: 'stingy'
-  },
-  {
-    date: Date.parse("June 17, 2020"),
-    sin: "約左我但又五點訓",
-    penalty: "",
-    key: uuidv1(),
-    belongs: 'stingy'
-  },
-  {
-    date: Date.parse("May 3, 2020"),
-    sin: "又唔講故事",
-    penalty: "要請我食二寶",
-    key: uuidv1(),
-    belongs: 'stingy'
-  },
-];
-
-const initialState: initialStateType = [...testData];
+}];
 
 const stingyNotesSlice = createSlice({
   name: "stingyNotes",
@@ -52,6 +58,11 @@ const stingyNotesSlice = createSlice({
 
       return state.concat(newStingyNote)
     },
+    deleteStingyNote: (state, action) => {
+      const newState = state.filter(note=>note.key !== action.payload);
+      Storage.remove(action.payload)
+      return newState
+    },
 
     restoreAllStingyNotes: (state, action) => {
       return action.payload
@@ -60,6 +71,6 @@ const stingyNotesSlice = createSlice({
 });
 
 export default stingyNotesSlice.reducer;
-export const { addNewStingyNote, restoreAllStingyNotes } = stingyNotesSlice.actions;
+export const { addNewStingyNote, restoreAllStingyNotes, deleteStingyNote } = stingyNotesSlice.actions;
 
 export const selectAllStingyNotes = (state: RootState) => state.stingyNotes;
